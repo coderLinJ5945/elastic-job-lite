@@ -25,7 +25,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * 全局配置.
+ * 全局配置，包含以下两类配置：
+ * 1、事件追踪数据源配置组
+ * 2、注册中心配置组
  *
  * @author zhangxinguo
  */

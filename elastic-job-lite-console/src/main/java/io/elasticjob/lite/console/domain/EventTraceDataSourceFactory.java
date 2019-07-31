@@ -23,7 +23,7 @@ public final class EventTraceDataSourceFactory {
     
     /**
      * 创建事件追踪数据源.
-     * 
+     * 需要注意的是，只支持固定的UTF-8编码
      * @param driver 数据库驱动类名称
      * @param url 数据库URL
      * @param username 数据库用户名

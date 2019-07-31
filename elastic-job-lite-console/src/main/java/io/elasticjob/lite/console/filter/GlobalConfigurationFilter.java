@@ -43,8 +43,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * 全局配置过滤器.
- *
+ * 全局配置过滤器.主要作用是过滤session，创建注册中心.
+ *  实现 Servlet的过滤器
  * @author caohao
  */
 public final class GlobalConfigurationFilter implements Filter {
@@ -52,11 +52,24 @@ public final class GlobalConfigurationFilter implements Filter {
     private final RegistryCenterConfigurationService regCenterService = new RegistryCenterConfigurationServiceImpl();
     
     private final EventTraceDataSourceConfigurationService rdbService = new EventTraceDataSourceConfigurationServiceImpl();
-    
+
+    /**
+     * web 应用程序启动时,调用init 方法读取xml
+     * @param filterConfig
+     * @throws ServletException
+     */
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
     }
-    
+
+    /**
+     * 过滤实现，作用
+     * @param servletRequest
+     * @param servletResponse
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
@@ -69,7 +82,11 @@ public final class GlobalConfigurationFilter implements Filter {
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }
-    
+
+    /**
+     * 如果session中包含注册中心配置，就直接初始化 RegistryCenterConfiguration
+     * @param httpSession
+     */
     private void loadActivatedRegCenter(final HttpSession httpSession) {
         Optional<RegistryCenterConfiguration> config = regCenterService.loadActivated();
         if (config.isPresent()) {

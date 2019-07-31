@@ -27,7 +27,7 @@ import java.util.Set;
 
 /**
  * 事件追踪数据源配置根对象.
- *
+ *  EventTraceDataSourceConfiguration 配置组对象
  * @author zhangxinguo
  */
 @Getter

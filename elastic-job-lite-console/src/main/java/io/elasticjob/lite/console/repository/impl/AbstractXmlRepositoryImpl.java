@@ -50,7 +50,11 @@ public abstract class AbstractXmlRepositoryImpl<E> implements XmlRepository<E> {
             throw new JobConsoleException(ex);
         }
     }
-    
+
+    /**
+     * 加载xml信息
+     * @return
+     */
     @Override
     public synchronized E load() {
         if (!file.exists()) {
@@ -68,7 +72,11 @@ public abstract class AbstractXmlRepositoryImpl<E> implements XmlRepository<E> {
             throw new JobConsoleException(ex);
         }
     }
-    
+
+    /**
+     * 保存zk jdbc的连接信息到xml
+     * @param entity 数据
+     */
     @Override
     public synchronized void save(final E entity) {
         try {

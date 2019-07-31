@@ -26,7 +26,8 @@ import java.sql.SQLException;
 
 /**
  * 事件追踪数据源.
- * 
+ * 用于构造配置，初始化对象
+ *
  * @author zhangxinguo
  */
 @Slf4j
@@ -41,6 +42,8 @@ public final class EventTraceDataSource {
     
     /**
      * 初始化.
+     * 1、获取已配置的数据追踪源参数
+     * 2、进行数据库连接
      */
     public void init() {
         log.debug("Elastic job: data source init, connection url is: {}.", eventTraceDataSourceConfiguration.getUrl());

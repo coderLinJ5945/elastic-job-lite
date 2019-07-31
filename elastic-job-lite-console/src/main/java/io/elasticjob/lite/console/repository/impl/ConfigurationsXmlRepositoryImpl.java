@@ -22,7 +22,8 @@ import io.elasticjob.lite.console.repository.ConfigurationsXmlRepository;
 
 /**
  * 基于XML的全局配置数据访问器实现类.
- *
+ * 1、程序会生成 Configurations.xml 的文件
+ * 1.1、Configurations.xml内容：zookeeper相关配置信息，数据源配置信息
  * @author zhangliang
  */
 public final class ConfigurationsXmlRepositoryImpl extends AbstractXmlRepositoryImpl<GlobalConfiguration> implements ConfigurationsXmlRepository {
